@@ -5,6 +5,10 @@
 #include <ctime>
 using namespace std;
 string str;
+struct notems{
+	string name;
+	string nr;//å†…å®¹
+}s[100000];
 char x[6][6] = {
 		{'1','1','1','1','1','1'},
     {'1','.', '#', '#', '#', '#'},
@@ -16,33 +20,33 @@ char x[6][6] = {
 void game(){
 	int n;
 	while(true){
-	cout<<"ÇëÎÊÒªÍæÊ²Ã´"<<endl<<"1.²ÂÊýÓÎÏ·"<<endl<<"2.×ßÃÔ¹¬"<<endl<<"3.Ö±½ÓÍË³ö"<<endl;
+	cout<<"è¯·é—®è¦çŽ©ä»€ä¹ˆ"<<endl<<"1.çŒœæ•°æ¸¸æˆ"<<endl<<"2.èµ°è¿·å®«"<<endl<<"3.ç›´æŽ¥é€€å‡º"<<endl;
 	cin>>n;
 	if(n==1){
 		srand(time(NULL));
 		int r=rand()%99+1;
 		int a;
-		cout<<"Õâ¸öÊýµÄ·¶Î§1~100"<<endl;
+		cout<<"è¿™ä¸ªæ•°çš„èŒƒå›´1~100"<<endl;
 		sleep(1);
 		system("cls");
 		while(a!=r){
-			cout<<"Êý:";
+			cout<<"æ•°:";
 			cin>>a;
 			if(a>r){
-				cout<<"´óÁË"<<endl;
+				cout<<"å¤§äº†"<<endl;
 			}
 			if(a<r){
-				cout<<"Ð¡ÁË"<<endl;
+				cout<<"å°äº†"<<endl;
 			}
 			sleep(1);
 			system("cls");
 		}
-		cout<<"¹§Ï²Äã£¬²Â¶ÔÁË!"<<endl;
+		cout<<"æ­å–œä½ ï¼ŒçŒœå¯¹äº†!"<<endl;
 	  }
 	  else if(n==2){
 	  	int a=1,b=1;
 	  	char w;
-	  	cout<<"wasd²Ù×÷"<<endl;
+	  	cout<<"wasdæ“ä½œ"<<endl;
 	  	while(a!=5||b!=5){
 	  		system("cls");
 	  		for(int i=1;i<=5;i++){
@@ -59,12 +63,12 @@ void game(){
 				cin>>w;
 				if(w=='w'||w=='W'){
 					if(a-1==0){
-						cout<<"Äã³öµØÍ¼ÁË"<<endl;
+						cout<<"ä½ å‡ºåœ°å›¾äº†"<<endl;
 						break;
 					}
 					else{
 						if(x[a-1][b]=='#'){
-							cout<<"Äã×²Ç½ÁË"<<endl;
+							cout<<"ä½ æ’žå¢™äº†"<<endl;
 							break;
 						}
 						else{
@@ -74,12 +78,12 @@ void game(){
 				}
 				else if(w=='S'||w=='s'){
 					if(a+1==6){
-						cout<<"Äã³öµØÍ¼ÁË"<<endl;
+						cout<<"ä½ å‡ºåœ°å›¾äº†"<<endl;
 						break;
 					}
 					else{
 						if(x[a+1][b]=='#'){
-							cout<<"Äã×²Ç½ÁË"<<endl;
+							cout<<"ä½ æ’žå¢™äº†"<<endl;
 							break;
 						}
 						else{
@@ -89,12 +93,12 @@ void game(){
 				}
 				else if(w=='a'||w=='A'){
 					if(b-1==6){
-						cout<<"Äã³öµØÍ¼ÁË"<<endl;
+						cout<<"ä½ å‡ºåœ°å›¾äº†"<<endl;
 						break;
 					}
 					else{
 						if(x[a][b-1]=='#'){
-							cout<<"Äã×²Ç½ÁË"<<endl;
+							cout<<"ä½ æ’žå¢™äº†"<<endl;
 							break;
 						}
 						else{
@@ -104,12 +108,12 @@ void game(){
 				}
 				else if(w=='d'||w=='D'){
 					if(b+1==6){
-						cout<<"Äã³öµØÍ¼ÁË"<<endl;
+						cout<<"ä½ å‡ºåœ°å›¾äº†"<<endl;
 						break;
 					}
 					else{
 						if(x[a][b+1]=='#'){
-							cout<<"Äã×²Ç½ÁË"<<endl;
+							cout<<"ä½ æ’žå¢™äº†"<<endl;
 							break;
 						}
 						else{
@@ -118,7 +122,7 @@ void game(){
 					}
 				}
 				else{
-					cout<<"´íÎó"<<endl;
+					cout<<"é”™è¯¯"<<endl;
 				}
 			}
 			cout<<"ok"<<endl;
@@ -126,31 +130,90 @@ void game(){
 			system("cls");
 		}
 		else if(n==3){
-			cout<<"¸ÐÐ»Íæ"<<endl;
+			cout<<"æ„Ÿè°¢çŽ©"<<endl;
 			sleep(1);
 			system("cls");
 			return;
 		}
 		else{
-			cout<<"´íÎó"<<endl;
+			cout<<"é”™è¯¯"<<endl;
 		}
 	}
 }
+int note(){
+	int ans;
+	freopen("note.in","r",stdin);
+	cin>>ans;
+	for(int i=1;i<=ans;i++){
+		getchar();
+		getline(cin,s[i].name);
+		getline(cin,s[i].nr);
+	}
+	freopen("CON","r",stdin);
+	int w;
+	string lag;
+	while(true){
+		cout<<"è¯·é—®è¦å¹²ä»€ä¹ˆ 1.å†™æ—¥è®° 2.çœ‹æ—¥è®° 3.é€€å‡º"<<endl;
+		cin>>w;
+		if(w==1){
+			ans++;
+			cout<<"åå­—:";
+			getchar();
+			getline(cin,s[ans].name);
+			cout<<"å†…å®¹(/næ¢è¡Œ):";
+			getline(cin,s[ans].nr);
+			cout<<"ok"<<endl;
+		}
+		else if(w==2){
+			cout<<"è¯·è¾“å…¥è¯¥æ–‡æœ¬åå­—:";
+			getchar();
+			getline(cin,lag);
+			for(int i=1;i<=ans;i++){
+				if(lag==s[i].name){
+					cout<<lag<<endl<<"--------------------"<<endl<<s[i].nr<<endl;
+				}
+			}
+			cout<<"ok"<<endl;
+		}
+		else if(w==3){
+			return ans;
+		}
+		else{
+			cout<<"é”™è¯¯"<<endl;
+		}
+	}
+}
+int cnt;
 int main(){
-	cout<<"windows·Ç¹Ù·½cmd"<<endl;
-	cout<<"°æÈ¨ËùÓÐ (c) 2023 zhizi¡£±£ÁôËùÓÐÈ¨Àû¡£"<<endl;
-	//ÎÒ¾ÍÎÊÄãÇ°¼¸¾ä»°6²»6
+	cout<<"windowséžå®˜æ–¹cmd"<<endl;
+	cout<<"ç‰ˆæƒæ‰€æœ‰ (c) 2023 zhiziã€‚ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚"<<endl;
+	//æˆ‘å°±é—®ä½ å‰å‡ å¥è¯6ä¸6
 	while(true){
 		cout<<">";
 		getline(cin,str);
 		if(str=="help"){
-			cout<<"game ´ò¿ªÐ¡ÓÎÏ·"<<endl<<"chat ÁÄÌì"<<endl<<"note ´ò¿ªÈÕ¼Ç±¾"<<endl<<"html ±àÐ´html"<<endl<<"starthtml ´ò¿ªhtmlÎÄ¼þ"<<endl<<"zhizi ´ò¿ªÖÊ×ÓµÄ¸öÈËÖ÷Ò³"<<endl;
+			cout<<"game æ‰“å¼€å°æ¸¸æˆ"<<endl<<"chat èŠå¤©"<<endl<<"note æ‰“å¼€æ—¥è®°æœ¬"<<endl<<"CLS æ¸…å±"<<endl<<"html ç¼–å†™html"<<endl<<"starthtml æ‰“å¼€htmlæ–‡ä»¶"<<endl<<"time è®¡æ—¶"<<endl<<"zhizi æ‰“å¼€è´¨å­çš„ä¸ªäººä¸»é¡µ"<<endl;
 		}
 		else if(str=="game"){
 			game();
 		}
 		else if(str=="chat"){
-			system("start http://zhiziqixingdeng.github.io/gotochat.html");
+			system("start http://hack.chat/?chat");
+		}
+		else if(str=="note"){
+			cnt=note();
+			freopen("note.in","w",stdout);
+			cout<<cnt<<endl;
+			for(int i=1;i<=cnt;i++){
+				cout<<s[i].name<<endl<<s[i].nr<<endl;
+			}
+			freopen("CON","w",stdout);
+		}
+		else if(str=="CLS"){
+			getchar();
+			system("cls");
+			cout<<"windowséžå®˜æ–¹cmd"<<endl;
+	    cout<<"ç‰ˆæƒæ‰€æœ‰ (c) 2023 zhiziã€‚ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚"<<endl;
 		}
 	}
 }
