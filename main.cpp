@@ -183,6 +183,18 @@ int note(){
 		}
 	}
 }
+void html(){
+	cout<<"zhizi-html编辑器"<<endl;
+	cout<<"版权所有 (c) 2023 zhizi。保留所有权利。"<<endl;
+	string str2;
+	freopen("index.html","w",stdout);
+	while(str2!="</html>"){
+		getline(cin,str2);
+		cout<<str2<<endl;
+	}
+	freopen("CON","w",stdout);
+	return;
+}
 int cnt;
 int main(){
 	cout<<"windows非官方cmd"<<endl;
@@ -214,6 +226,21 @@ int main(){
 			system("cls");
 			cout<<"windows非官方cmd"<<endl;
 	    cout<<"版权所有 (c) 2023 zhizi。保留所有权利。"<<endl;
+		}
+		else if(str=="time"){
+			system("start time.exe");
+		}
+		else if(str=="html"){
+			html();
+		}
+		else if(str=="starthtml"){
+			system("strat index.html");
+		}
+		else if(str=="zhizi"){
+			system("strat http://zhiziqixingdeng.github.io");
+		}
+		else{
+			cout<<"错误"<<endl;
 		}
 	}
 }
